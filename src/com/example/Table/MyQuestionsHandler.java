@@ -263,12 +263,302 @@ public class MyQuestionsHandler {
             }
         });
 
+        AllQuestions.get(9).setConditionChecker(new MyConditionChecker() {
+            @Override
+            public boolean CheckCondition() {
+                /**
+                 * Answer to Q16 is...
+                 */
+                int q16Answer = AllQuestions.get(15).getCurrentCondition();
+
+                switch(AllQuestions.get(9).getCurrentCondition()){
+                    case A: //'A'
+                        return ( q16Answer == D );
+                    case B: //'B'
+                        return ( q16Answer == A );
+                    case C: //'C'
+                        return ( q16Answer == E );
+                    case D: //'D'
+                        return ( q16Answer == B );
+                    case E: //'E'
+                        return ( q16Answer == C );
+                    default:
+                        return false;
+                }
+            }
+        });
+
+        AllQuestions.get(10).setConditionChecker(new MyConditionChecker() {
+            @Override
+            public boolean CheckCondition() {
+                /**
+                 * Sum of 'B' answers count in [Q1-Q10] is...
+                 */
+                int sumBAnswers = 0;
+                for(int i=0; i<10; i++)
+                    if(AllQuestions.get(i).getCurrentCondition() == B)
+                        ++sumBAnswers;
+                //end for
+
+                switch(AllQuestions.get(10).getCurrentCondition()){
+                    case A: //'A'
+                        return ( sumBAnswers == 0 );
+                    case B: //'B'
+                        return ( sumBAnswers == 1 );
+                    case C: //'C'
+                        return ( sumBAnswers == 2 );
+                    case D: //'D'
+                        return ( sumBAnswers == 3 );
+                    case E: //'E'
+                        return ( sumBAnswers == 4 );
+                    default:
+                        return false;
+                }
+            }
+        });
+
+        AllQuestions.get(11).setConditionChecker(new MyConditionChecker() {
+            @Override
+            public boolean CheckCondition() {
+                /**
+                 * Sum of 'B', 'C', 'D' answers count in is...
+                 */
+                int sumBCDAnswers = 0;
+
+                for(int i=0; i<QUESTIONS_COUNT; i++)
+                    if( AllQuestions.get(i).getCurrentCondition() == B
+                            || AllQuestions.get(i).getCurrentCondition() == C
+                            || AllQuestions.get(i).getCurrentCondition() == D)
+                        ++sumBCDAnswers;
+                //end for
+
+                switch(AllQuestions.get(11).getCurrentCondition()){
+                    case A: //'A'
+                        return ( sumBCDAnswers%2 == 0 ); // odd
+                    case B: //'B'
+                        return ( sumBCDAnswers%2 == 1 ); // even
+                    case C: //'C'
+                        return ( (Math.sqrt(sumBCDAnswers) * Math.sqrt(sumBCDAnswers)) == sumBCDAnswers ); // is square
+                    case D: //'D'
+                         // is prime number
+                        for(int i=2; i<sumBCDAnswers; i++){
+                            if(sumBCDAnswers%i == 0){
+                                return false; //number is divisible so its not prime
+                            }
+                        }
+                        return true; //number is prime now
+
+                    case E: //'E'
+                        return ( sumBCDAnswers%5 == 0 ); // can divide by 5
+                    default:
+                        return false;
+                }
+            }
+        });
+
+        AllQuestions.get(12).setConditionChecker(new MyConditionChecker() {
+            @Override
+            public boolean CheckCondition() {
+                /**
+                 * The only Q which answer is A and which number is even is...
+                 */
+                int evenAQuestion = -1;
+                for(int i=0; i<QUESTIONS_COUNT; i++)
+                    if(AllQuestions.get(i).getCurrentCondition() == A && i%2 == 1)
+                        evenAQuestion = i;
+                //end for
+
+                switch(AllQuestions.get(12).getCurrentCondition()){
+                    case A: //'A'
+                        return ( evenAQuestion == 8 );
+                    case B: //'B'
+                        return ( evenAQuestion == 10 );
+                    case C: //'C'
+                        return ( evenAQuestion == 12 );
+                    case D: //'D'
+                        return ( evenAQuestion == 14 );
+                    case E: //'E'
+                        return ( evenAQuestion == 16 );
+                    default:
+                        return false;
+                }
+            }
+        });
+
+        AllQuestions.get(13).setConditionChecker(new MyConditionChecker() {
+            @Override
+            public boolean CheckCondition() {
+                /**
+                 * Total D answer count is...
+                 */
+                int DCount = 0;
+                for(int i=0; i<QUESTIONS_COUNT; i++)
+                    if(AllQuestions.get(i).getCurrentCondition() == D)
+                        ++DCount;
+                //end for
+
+                switch(AllQuestions.get(13).getCurrentCondition()){
+                    case A: //'A'
+                        return ( DCount == 6 );
+                    case B: //'B'
+                        return ( DCount == 7 );
+                    case C: //'C'
+                        return ( DCount == 8 );
+                    case D: //'D'
+                        return ( DCount == 9 );
+                    case E: //'E'
+                        return ( DCount == 10 );
+                    default:
+                        return false;
+                }
+            }
+        });
+
+        AllQuestions.get(14).setConditionChecker(new MyConditionChecker() {
+            @Override
+            public boolean CheckCondition() {
+                /**
+                 * Answer to Q12 is...
+                 */
+                int q12Answer = AllQuestions.get(11).getCurrentCondition();
 
 
+                switch(AllQuestions.get(14).getCurrentCondition()){
+                    case A: //'A'
+                        return ( q12Answer == A );
+                    case B: //'B'
+                        return ( q12Answer == B );
+                    case C: //'C'
+                        return ( q12Answer == C );
+                    case D: //'D'
+                        return ( q12Answer == D );
+                    case E: //'E'
+                        return ( q12Answer == E );
+                    default:
+                        return false;
+                }
+            }
+        });
+
+        AllQuestions.get(15).setConditionChecker(new MyConditionChecker() {
+            @Override
+            public boolean CheckCondition() {
+                /**
+                 * Answer to Q10 is...
+                 */
+                int q10Answer = AllQuestions.get(9).getCurrentCondition();
 
 
+                switch(AllQuestions.get(15).getCurrentCondition()){
+                    case A: //'A'
+                        return ( q10Answer == D );
+                    case B: //'B'
+                        return ( q10Answer == C );
+                    case C: //'C'
+                        return ( q10Answer == B );
+                    case D: //'D'
+                        return ( q10Answer == A );
+                    case E: //'E'
+                        return ( q10Answer == E );
+                    default:
+                        return false;
+                }
+            }
+        });
+
+        AllQuestions.get(16).setConditionChecker(new MyConditionChecker() {
+            @Override
+            public boolean CheckCondition() {
+                /**
+                 * Answer to Q6 is...
+                 */
+                int q6Answer = AllQuestions.get(5).getCurrentCondition();
 
 
+                switch(AllQuestions.get(16).getCurrentCondition()){
+                    case A: //'A'
+                        return ( q6Answer == C );
+                    case B: //'B'
+                        return ( q6Answer == D );
+                    case C: //'C'
+                        return ( q6Answer == E );
+                    case D: //'D'
+                        return ( q6Answer == A || q6Answer == B );
+                    case E: //'E'
+                        return ( false );
+                    default:
+                        return false;
+                }
+            }
+        });
+
+
+        AllQuestions.get(17).setConditionChecker(new MyConditionChecker() {
+            @Override
+            public boolean CheckCondition() {
+                /**
+                 * Total A answer count is...
+                 */
+                int ACount = 0, BCount = 0, CCount = 0, DCount = 0, ECount = 0;
+                for(int i=0; i<QUESTIONS_COUNT; i++){
+                    switch(AllQuestions.get(i).getCurrentCondition()){
+                        case A:
+                            ACount++;
+                            break;
+                        case B:
+                            BCount++;
+                            break;
+                        case C:
+                            CCount++;
+                            break;
+                        case D:
+                            DCount++;
+                            break;
+                        case E:
+                            ECount++;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                //end for
+
+                switch(AllQuestions.get(17).getCurrentCondition()){
+                    case A: //'A'
+                        return ( ACount == BCount ); //equal to B answer count
+                    case B: //'B'
+                        return ( ACount == CCount ); //equal to C answer count
+                    case C: //'C'
+                        return ( ACount == DCount ); //equal to D answer count
+                    case D: //'D'
+                        return ( ACount == ECount ); //equal to E answer count
+                    case E: //'E'
+                        return ( ACount != BCount && ACount != CCount && ACount != DCount && ACount != ECount );
+                    default:
+                        return false;
+                }
+            }
+        });
+
+        AllQuestions.get(18).setConditionChecker(new MyConditionChecker() {
+            @Override
+            public boolean CheckCondition() {
+                /**
+                 * Always true
+                 */
+                return true;
+            }
+        });
+
+        AllQuestions.get(19).setConditionChecker(new MyConditionChecker() {
+            @Override
+            public boolean CheckCondition() {
+                /**
+                 * Always true
+                 */
+                return true;
+            }
+        });
 
     }
 
