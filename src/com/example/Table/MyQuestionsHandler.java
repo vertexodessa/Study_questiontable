@@ -21,6 +21,42 @@ public class MyQuestionsHandler {
 
     List<MyQuestion> AllQuestions = new ArrayList<MyQuestion>();
 
+    int getAnswer(int num){
+        return AllQuestions.get(num).getCurrentCondition();
+    }
+
+    void calculate(){
+        //TODO: code here
+        outer: while(iterate()){
+                    for (MyQuestion question : AllQuestions) {
+                        if (!question.ConditionChecker.CheckCondition()) {
+                            continue outer;
+                        }
+                    }
+                }
+
+    }
+
+    public boolean iterate(){
+        /**
+         * find first condition less than 5, iterate it; return false if ended;
+         */
+
+        for(MyQuestion question : AllQuestions){
+            if(question.getCurrentCondition() != 4) {
+                question.setCurrentCondition(question.getCurrentCondition() + 1);
+                return true;
+            }else{
+                question.setCurrentCondition(0);
+            }
+        }
+
+
+        return false;
+
+        //return value = true if can iterate more, false if ended
+
+    }
 
     void fillQuestions()
     {

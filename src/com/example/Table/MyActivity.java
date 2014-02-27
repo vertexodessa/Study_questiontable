@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 public class MyActivity extends Activity {
 
-    MyQuestionsHandler Questions;
+    MyQuestionsHandler Questions = new MyQuestionsHandler();
 
 
 
@@ -18,8 +18,12 @@ public class MyActivity extends Activity {
         setContentView(R.layout.main);
 
 
-        Questions.fillQuestions();
 
+
+        Questions.fillQuestions();
+        Questions.calculate();
+
+        Questions.calculate();
 
     }
 }
